@@ -1,9 +1,7 @@
-//I got stuck trying to show the total. You'll see the tries I gave it through te code.
-
 let gb = 0 // Gingerbread
 let cc = 0 // Chocolate Chip
 let sugar = 0 // Sugar Sprinkle
-let total = gb + cc + sugar
+let total = 0
 let totalDisplay = document.getElementById('qty-total') //to show total count
 //to increase or decrease gingerbread
 let gbPlusBtn = document.getElementById('add-gb')
@@ -37,51 +35,50 @@ function sugarUpdateQuantity(displayQuantity) {
 gbMinusBtn.addEventListener('click', function(e) {
     if (gb > 0) {
         gb--
+        total-- //decreasing total count
     } else {
         gb = gb //to not let the gingerbread count go below zero
     }
-//   totalDisplay.textContent = `${total}`     this was my first attempt to dislay the total quantity
     gbUpdateQuantity(gb)
+    totalDisplay.textContent = `${total}` //to show the total count
 })
 
 gbPlusBtn.addEventListener('click', function(e) {
-//    totalDisplay.innerHTML = total     this was my second attempt
     gbUpdateQuantity(++gb)
+    totalDisplay.textContent = `${++total}` //to show and increase the total count
 })
 
 ccMinusBtn.addEventListener('click', function(e) {
     if (cc > 0) {
         cc--
+        total--
     } else {
         cc = cc //to not let the chocolate chip count go below zero
     }
     ccUpdateQuantity(cc)
+    totalDisplay.textContent = `${total}`
 })
 
 ccPlusBtn.addEventListener('click', function(e) {
     ccUpdateQuantity(++cc)
+    totalDisplay.textContent = `${++total}`
 })
 
 sugarMinusBtn.addEventListener('click', function(e) {
     if (sugar > 0) {
         sugar--
+        total--
     } else {
         sugar = sugar //to not let the sugar sprinkle count go below zero
     }
     sugarUpdateQuantity(sugar)
+    totalDisplay.textContent = `${total}`
 })
 
 sugarPlusBtn.addEventListener('click', function(e) {
     sugarUpdateQuantity(++sugar)
+    totalDisplay.textContent = `${++total}`
 })
-
-/*and this was my third one
-
-if (gb > 0 || cc > 0 || sugar > 0) {
-    totalDisplay.textContent = `${total}`
-} else {
-    total = 0
-}*/
 
 let yourName = "Enrique Angulo"
 credit.textContent = `Created by ${yourName}`
