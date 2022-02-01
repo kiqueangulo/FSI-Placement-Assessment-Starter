@@ -31,53 +31,64 @@ function sugarUpdateQuantity(displayQuantity) {
     sugar.innerHTML = displayQuantity
 }
 
+//to display the total count
+function showTotal(displayQuantity) {
+    totalDisplay.textContent = `${total}`
+}
+
 //making the buttons work
 gbMinusBtn.addEventListener('click', function(e) {
     if (gb > 0) {
-        gb--
-        total-- //decreasing total count
+        --gb
+        --total //decreasing total count
     } else {
         gb = gb //to not let the gingerbread count go below zero
     }
     gbUpdateQuantity(gb)
-    totalDisplay.textContent = `${total}` //to show the total count
+    showTotal(total)
 })
 
 gbPlusBtn.addEventListener('click', function(e) {
-    gbUpdateQuantity(++gb)
-    totalDisplay.textContent = `${++total}` //to show and increase the total count
+    gb++
+    total++ //increasing total count
+    gbUpdateQuantity(gb)
+    showTotal(total)
 })
 
 ccMinusBtn.addEventListener('click', function(e) {
     if (cc > 0) {
-        cc--
-        total--
+        --cc
+        --total
     } else {
-        cc = cc //to not let the chocolate chip count go below zero
+        cc = cc 
     }
     ccUpdateQuantity(cc)
-    totalDisplay.textContent = `${total}`
+    showTotal(total)
 })
 
 ccPlusBtn.addEventListener('click', function(e) {
-    ccUpdateQuantity(++cc)
-    totalDisplay.textContent = `${++total}`
+    ++cc
+    ++total
+    ccUpdateQuantity(cc)
+    showTotal(total)
 })
 
 sugarMinusBtn.addEventListener('click', function(e) {
     if (sugar > 0) {
-        sugar--
-        total--
+        --sugar
+        --total
     } else {
-        sugar = sugar //to not let the sugar sprinkle count go below zero
+        sugar = sugar
     }
     sugarUpdateQuantity(sugar)
-    totalDisplay.textContent = `${total}`
+    showTotal(total)
 })
 
 sugarPlusBtn.addEventListener('click', function(e) {
-    sugarUpdateQuantity(++sugar)
-    totalDisplay.textContent = `${++total}`
+    ++sugar
+    ++total
+    sugarUpdateQuantity(sugar)
+    showTotal(total)
 })
 
 let yourName = "Enrique Angulo"
