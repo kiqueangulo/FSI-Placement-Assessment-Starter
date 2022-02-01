@@ -1,27 +1,87 @@
-// HINT: You can delete this console.log after you no longer need it!
-console.log('JavaScript code has loaded!')
-// First, tell us your name
-let yourName = "Jane Doe" // HINT: Replace this with your own name!
+//I got stuck trying to show the total. You'll see the tries I gave it through te code.
 
-// We'll use these variables to track the counts of each cookie type
 let gb = 0 // Gingerbread
 let cc = 0 // Chocolate Chip
 let sugar = 0 // Sugar Sprinkle
+let total = gb + cc + sugar
+let totalDisplay = document.getElementById('qty-total') //to show total count
+//to increase or decrease gingerbread
+let gbPlusBtn = document.getElementById('add-gb')
+let gbMinusBtn = document.getElementById('minus-gb')
+//to increase or decrease chocolate chip
+let ccPlusBtn = document.getElementById('add-cc')
+let ccMinusBtn = document.getElementById('minus-cc')
+//to increase or decrease sugar sprinkle
+let sugarPlusBtn = document.getElementById('add-sugar')
+let sugarMinusBtn = document.getElementById('minus-sugar')
 
-// selecting the element with an id of credit
-const credit = document.querySelector('#credit')
-// selecting the element with an id of add-gb
-const gbPlusBtn = document.querySelector('#add-gb')
+//to display gingerbread count
+function gbUpdateQuantity(displayQuantity) {
+    let gb = document.querySelector('#qty-gb')
+    gb.innerHTML = displayQuantity
+}
 
-// Code to update name display
-credit.textContent = `Created by ${yourName}`
+//to display chocolate chip count
+function ccUpdateQuantity(displayQuantity) {
+    let cc = document.querySelector('#qty-cc')
+    cc.innerHTML = displayQuantity
+}
 
-// Event listener for clicks on the "+" button for Gingerbread cookies
-gbPlusBtn.addEventListener('click', function() {
-// HINT: You can delete this console.log after you no longer need it!
-console.log('Gingerbread + button was clicked!')
+//to display sugar sprinkle count
+function sugarUpdateQuantity(displayQuantity) {
+    let sugar = document.querySelector('#qty-sugar')
+    sugar.innerHTML = displayQuantity
+}
 
-// TODO: Write the code to be run when the "+" button for "Gingerbread" is clicked
+//making the buttons work
+gbMinusBtn.addEventListener('click', function(e) {
+    if (gb > 0) {
+        gb--
+    } else {
+        gb = gb //to not let the gingerbread count go below zero
+    }
+//   totalDisplay.textContent = `${total}`     this was my first attempt to dislay the total quantity
+    gbUpdateQuantity(gb)
 })
 
-// TODO: Hook up event listeners for the rest of the buttons
+gbPlusBtn.addEventListener('click', function(e) {
+//    totalDisplay.innerHTML = total     this was my second attempt
+    gbUpdateQuantity(++gb)
+})
+
+ccMinusBtn.addEventListener('click', function(e) {
+    if (cc > 0) {
+        cc--
+    } else {
+        cc = cc //to not let the chocolate chip count go below zero
+    }
+    ccUpdateQuantity(cc)
+})
+
+ccPlusBtn.addEventListener('click', function(e) {
+    ccUpdateQuantity(++cc)
+})
+
+sugarMinusBtn.addEventListener('click', function(e) {
+    if (sugar > 0) {
+        sugar--
+    } else {
+        sugar = sugar //to not let the sugar sprinkle count go below zero
+    }
+    sugarUpdateQuantity(sugar)
+})
+
+sugarPlusBtn.addEventListener('click', function(e) {
+    sugarUpdateQuantity(++sugar)
+})
+
+/*and this was my third one
+
+if (gb > 0 || cc > 0 || sugar > 0) {
+    totalDisplay.textContent = `${total}`
+} else {
+    total = 0
+}*/
+
+let yourName = "Enrique Angulo"
+credit.textContent = `Created by ${yourName}`
